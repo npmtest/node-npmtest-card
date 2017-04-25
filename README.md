@@ -1,6 +1,6 @@
 # npmtest-card
 
-#### test coverage for  [card (v2.2.1)](https://github.com/jessepollak/card#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-card.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-card) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-card.svg)](https://travis-ci.org/npmtest/node-npmtest-card)
+#### basic test coverage for  [card (v2.3.0)](https://github.com/jessepollak/card#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-card.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-card) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-card.svg)](https://travis-ci.org/npmtest/node-npmtest-card)
 
 #### Card lets you add an interactive, CSS3 credit card animation to your credit card form to help your users through the process.
 
@@ -10,7 +10,7 @@
 |--:|:--|
 | coverage : | [![istanbul-coverage](https://npmtest.github.io/node-npmtest-card/build/coverage.badge.svg)](https://npmtest.github.io/node-npmtest-card/build/coverage.html/index.html)|
 | test-report : | [![test-report](https://npmtest.github.io/node-npmtest-card/build/test-report.badge.svg)](https://npmtest.github.io/node-npmtest-card/build/test-report.html)|
-| build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-card/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-card/tree/gh-pages/build)|
+| test-server-github : | [![github.com test-server](https://npmtest.github.io/node-npmtest-card/GitHub-Mark-32px.png)](https://npmtest.github.io/node-npmtest-card/build/app/index.html) | | build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-card/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-card/tree/gh-pages/build)|
 
 - [https://npmtest.github.io/node-npmtest-card/build/coverage.html/index.html](https://npmtest.github.io/node-npmtest-card/build/coverage.html/index.html)
 
@@ -77,10 +77,10 @@
     },
     "directories": {},
     "dist": {
-        "shasum": "ec5f058d07bc89b98fb815560e0e70749785bfbb",
-        "tarball": "https://registry.npmjs.org/card/-/card-2.2.1.tgz"
+        "shasum": "fb3a53e64adb4c33504164610093213f91766dd1",
+        "tarball": "https://registry.npmjs.org/card/-/card-2.3.0.tgz"
     },
-    "gitHead": "d6d2845c16a6f450ecda87f7c3c51155eec9b303",
+    "gitHead": "1abada4eaab3803ec1cf325d4b574bf83d6d149f",
     "homepage": "https://github.com/jessepollak/card#readme",
     "main": "lib/card.js",
     "maintainers": [
@@ -96,16 +96,18 @@
     },
     "scripts": {
         "clean": "rimraf ./lib/ && rimraf ./dist/",
-        "compile": "npm run clean && npm run compile:lib && npm run compile:dist",
+        "compile": "npm run clean && npm run compile:lib && npm run compile:dist && npm run compile:styles",
         "compile:dist": "npm run env NODE_ENV=production && webpack",
         "compile:lib": "coffee --compile -o ./lib/ ./src/coffee/card.coffee && node-sass ./src/scss/card.scss -o lib/ && replace '../scss/card.scss' './card.css' lib/card.js",
+        "compile:styles": "node-sass ./src/scss/card.scss -o ./dist/ --output-style compressed",
         "development": "webpack-dev-server --hot --inline",
         "postpublish": "git push origin master && git push --tags",
         "prepublish": "npm run env NODE_ENV=production && npm run compile",
         "preversion": "npm run compile",
         "test": "karma start --single-run --browsers PhantomJS"
     },
-    "version": "2.2.1"
+    "version": "2.3.0",
+    "bin": {}
 }
 ```
 
